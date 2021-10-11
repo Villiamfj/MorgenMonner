@@ -3,6 +3,8 @@
     "description": "\" random \" monster energy drink",
     "version": "0.1",
     "manifest_version": 3,
+    "permissions": ["storage"],
+    "options_page":"options.html",
 
     "action":{
         "default_popup": "popup.html"

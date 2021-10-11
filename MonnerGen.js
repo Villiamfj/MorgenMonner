@@ -56,6 +56,13 @@ function mulberry32(a) {
       return ((t ^ t >>> 14) >>> 0) / 4294967296;
     }
 }
-let todaysMonner = GetTodaysMonner(true);
-document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
-document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
+
+let espresso;
+chrome.storage.sync.get(['espresso'], (result) => {
+    console.log("Found monner with espresso set to: " + result.espresso);
+
+    let todaysMonner = GetTodaysMonner(result.espresso);
+    document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
+    document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
+
+});
