@@ -43,9 +43,19 @@ function GetTodaysMonner(includeExpresso){
     //getting the date
     let d = new Date();
     
-    return monnerList[(d.getDate() + d.getMonth().toString()) % monnerList.length];
+    return monnerList[Math.floor(mulberry32(d.getMonth().toString() + d.getDate())() * monnerList.length)];
 }
 
+//Code taken from https://github.com/bryc/code/blob/master/jshash/PRNGs.md
+//original writer of the algorithm https://gist.github.com/tommyettinger/46a874533244883189143505d203312c
+function mulberry32(a) {
+    return function() {
+      var t = a += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+}
 let todaysMonner = GetTodaysMonner(true);
 document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
 document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
