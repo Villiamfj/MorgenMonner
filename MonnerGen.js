@@ -19,6 +19,10 @@ const expressoMonners = [
     {name:"VANILLA ESPRESSO", image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/06/08/auto/800/4e3380a94faae0d6d839ae051e67d45e.png?mod=v1_57bdbd25161eba1843e0776c220161b3"}
 ]
 
+const secretMenu = [
+    {name:"hov ej det var en sport-cola!", image: "https://www.sjobeck.dk/Admin/Public/GetImage.ashx?width=800&height=800&crop=5&FillCanvas=True&DoNotUpscale=true&Compression=75&image=/Files/Images/Produkter/134.png"}
+]
+
 function GetRandomMonner(includeExpresso){
     let monnerList;
     if(includeExpresso){
@@ -31,13 +35,15 @@ function GetRandomMonner(includeExpresso){
     return monnerList[Math.floor(Math.random() * monnerList.length) ];
 }
 
-function GetTodaysMonner(includeExpresso){
-    let monnerList;
+function GetTodaysMonner(includeExpresso, includeSecretMenu){
+    let monnerList = monners;
+    
+    //adding optionals
     if(includeExpresso){
-        monnerList = monners.concat(expressoMonners);
+        monnerList = monnerList.concat(expressoMonners);
     }
-    else{
-        monnerList = monners;
+    if(includeSecretMenu){
+        monnerList = monnerList.concat(secretMenu);
     }
 
     //getting the date
@@ -59,10 +65,12 @@ function mulberry32(a) {
 
 let espresso;
 chrome.storage.sync.get(['espresso'], (result) => {
-    console.log("Found monner with espresso set to: " + result.espresso);
+    chrome.storage.sync.get(['secretMenu'], (r) => {
 
-    let todaysMonner = GetTodaysMonner(result.espresso);
-    document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
-    document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
+        console.log("Found monner with espresso set to: " + result.espresso + " and the secretMenu: " + r.secretMenu);
 
+        let todaysMonner = GetTodaysMonner(result.espresso,r.secretMenu);
+        document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
+        document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
+    });
 });
