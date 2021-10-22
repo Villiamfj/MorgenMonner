@@ -45,10 +45,40 @@ function GetTodaysMonner(includeExpresso, includeSecretMenu){
         monnerList = monnerList.concat(secretMenu);
     }
 
-    //getting the date
-    let d = new Date();
+    return GetMonner(new Date(),monnerList);
+}
+
+function GetMonner(today,monnerList){
+    //getting todays monner
+    let todaysMonner = selectMonner(today,monnerList);
+
+    //get yesterdays monner
+    let yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    let yesterdaysMonner = selectMonner(yesterday,monnerList);
     
-    return monnerList[Math.floor(mulberry32(d.getMonth().toString() + d.getDate())() * monnerList.length)];
+    //compare the two and return a different monner to yesterdays
+    if(todaysMonner.name == yesterdaysMonner.name){
+        return FindNewMonner(todaysMonner,today,monnerList);
+    }
+    else return todaysMonner;
+}
+
+//finds a new monner by comparing later result at adding a year to the date
+function FindNewMonner(lastMonner,lastDate,monnerList){
+    let newDate = new Date();
+    newDate.setFullYear(lastDate.getFullYear() + 1);
+    let newMonner = selectMonner(newDate,monnerList);
+
+    if(newMonner.name == lastMonner.name){
+        return FindNewMonner(newMonner,newDate,monnerList);
+    }
+    else return newMonner;
+}
+
+//selects a monner from the list by using the mulberry32 function with data from the date
+function selectMonner(date,monnerList){
+    return monnerList[Math.floor(mulberry32(date.getMonth().toString() + date.getDate().toString() + date.getFullYear())() * monnerList.length)];
 }
 
 //Code taken from https://github.com/bryc/code/blob/master/jshash/PRNGs.md
