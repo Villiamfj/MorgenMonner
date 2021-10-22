@@ -6,7 +6,6 @@ const monners = [
     {name:"HAMILTON", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2018/05/10/auto/800/fd74cdb2bf3467cd78d1ca0a4d9ab29d.png?mod=v1_3fb90284f50ff17c71de3ff0490812de"},
     {name:"ULTRA PARADISE",image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2020/07/06/auto/800/fc9ea2b2525da898cdb0cd418bb6dc45.png?mod=v1_7bc1a34855bd9b67f0b3aed3da06821f"},
     {name:"ULTRA",image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2016/10/05/auto/800/cd3a532014dc28421933f426d921f6da.png?mod=v1_da6f0dde227e368327ddd3b1dc23409c"},
-    {name:"ULTRA CITRON", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2017/09/04/auto/800/0d08b8a91cc88ddf95151ef3144596e6.png?mod=v1_eab61302197adbcb0a6763d8fece6fef"},
     {name:"ULTRA VIOLET", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2019/03/26/auto/800/063b8eac1a68fb111d497c3c6fb984c7.png?mod=v1_e8eff231a4765e81431b7ba26c074002"},
     {name:"MANGO LOCO", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2019/04/18/auto/800/2c59d3eb36500e6908f5987d11993bd8.png?mod=v1_f7d93a1aca4f8e98ee0734a2a21e72e0"},
     {name:"PACIFIC PUNCH", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/03/17/auto/800/ec4aefd568154202aee1d405b327aaeb.png?mod=v1_ec1b2610582e4feacef7cd11742ec5bb"},
