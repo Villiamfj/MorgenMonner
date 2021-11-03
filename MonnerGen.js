@@ -37,18 +37,6 @@ chrome.storage.sync.get(['secretMenu'], (resultBool) => {
             });
 });
 
-function GetRandomMonner(includeExpresso){
-    let monnerList;
-    if(includeExpresso){
-        monnerList = monners.concat(expressoMonners);
-    }
-    else{
-        monnerList = monners;
-    }
-
-    return monnerList[Math.floor(Math.random() * monnerList.length) ];
-}
-
 function GetTodaysMonner(today,monnerList){
     //getting todays monner
     let todaysMonner = selectMonner(today,monnerList);
