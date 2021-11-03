@@ -13,14 +13,29 @@ const monners = [
     {name:"PUNCH", image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2020/04/20/auto/800/b8a6ce93b2888a8003cfdd8b4f4ebdc2.png?mod=v1_6c0a12b713a933c28b654fc9b0e5449c"}
 ]
 
-const expressoMonners = [
-    {name:"ESPRESSO & MILK", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/06/08/auto/800/7ee51fa2ea33054759a1214f116a68a4.png?mod=v1_8a35f825acf30200c1a440cbb70b1e92" },
-    {name:"VANILLA ESPRESSO", image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/06/08/auto/800/4e3380a94faae0d6d839ae051e67d45e.png?mod=v1_57bdbd25161eba1843e0776c220161b3"}
-]
+//inserting optionals
+chrome.storage.sync.get(['espresso'], (resultBool) => {
+    if(resultBool.espresso)
+        monners.push(
+            {
+                name:"ESPRESSO & MILK", 
+                image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/06/08/auto/800/7ee51fa2ea33054759a1214f116a68a4.png?mod=v1_8a35f825acf30200c1a440cbb70b1e92"
+            },
+            {
+                name:"VANILLA ESPRESSO", 
+                image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/06/08/auto/800/4e3380a94faae0d6d839ae051e67d45e.png?mod=v1_57bdbd25161eba1843e0776c220161b3"
+            }
+        );
+});
 
-const secretMenu = [
-    {name:"hov ej det var en sport-cola!", image: "https://www.sjobeck.dk/Admin/Public/GetImage.ashx?width=800&height=800&crop=5&FillCanvas=True&DoNotUpscale=true&Compression=75&image=/Files/Images/Produkter/134.png"}
-]
+chrome.storage.sync.get(['secretMenu'], (resultBool) => {
+    if(resultBool.secretMenu)
+        monners.push(
+            {
+                name:"hov ej det var en sport-cola!", 
+                image: "https://www.sjobeck.dk/Admin/Public/GetImage.ashx?width=800&height=800&crop=5&FillCanvas=True&DoNotUpscale=true&Compression=75&image=/Files/Images/Produkter/134.png"
+            });
+});
 
 function GetRandomMonner(includeExpresso){
     let monnerList;
@@ -34,21 +49,7 @@ function GetRandomMonner(includeExpresso){
     return monnerList[Math.floor(Math.random() * monnerList.length) ];
 }
 
-function GetTodaysMonner(includeExpresso, includeSecretMenu){
-    let monnerList = monners;
-    
-    //adding optionals
-    if(includeExpresso){
-        monnerList = monnerList.concat(expressoMonners);
-    }
-    if(includeSecretMenu){
-        monnerList = monnerList.concat(secretMenu);
-    }
-
-    return GetMonner(new Date(),monnerList);
-}
-
-function GetMonner(today,monnerList){
+function GetTodaysMonner(today,monnerList){
     //getting todays monner
     let todaysMonner = selectMonner(today,monnerList);
 
@@ -92,14 +93,8 @@ function mulberry32(a) {
     }
 }
 
-let espresso;
-chrome.storage.sync.get(['espresso'], (result) => {
-    chrome.storage.sync.get(['secretMenu'], (r) => {
+let todaysMonner = GetTodaysMonner(new Date(),monners);
+document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
+document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
 
-        console.log("Found monner with espresso set to: " + result.espresso + " and the secretMenu: " + r.secretMenu);
 
-        let todaysMonner = GetTodaysMonner(result.espresso,r.secretMenu);
-        document.body.innerHTML += "<h2>" + todaysMonner.name + "</h2>";
-        document.body.innerHTML += "<img src = \"" + todaysMonner.image + "\" + alt = \" picture of " + todaysMonner.name + "\">";
-    });
-});
