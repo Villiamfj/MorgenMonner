@@ -10,7 +10,8 @@ const monners = [
     {name:"MANGO LOCO", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2019/04/18/auto/800/2c59d3eb36500e6908f5987d11993bd8.png?mod=v1_f7d93a1aca4f8e98ee0734a2a21e72e0"},
     {name:"PACIFIC PUNCH", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/03/17/auto/800/ec4aefd568154202aee1d405b327aaeb.png?mod=v1_ec1b2610582e4feacef7cd11742ec5bb"},
     {name:"PIPELINE PUNCH", image:"https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2020/03/05/auto/800/5c815ea59fda9af66ebb1e9c5f2d8039.png?mod=v1_85981f86f457c447a176a6cb55b6e24a"},
-    {name:"PUNCH", image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2020/04/20/auto/800/b8a6ce93b2888a8003cfdd8b4f4ebdc2.png?mod=v1_6c0a12b713a933c28b654fc9b0e5449c"}
+    {name:"PUNCH", image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2020/04/20/auto/800/b8a6ce93b2888a8003cfdd8b4f4ebdc2.png?mod=v1_6c0a12b713a933c28b654fc9b0e5449c"},
+    {name:"ULTRA FIESTA MANGO", image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2021/09/15/auto/800/dffd857b8f083ab2f9a09a29b3f2659f.png?mod=v1_c7563dba853f15d53d67f5bc77d87e54"}
 ]
 
 //inserting optionals
